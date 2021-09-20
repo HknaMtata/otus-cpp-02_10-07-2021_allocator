@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Project build
         working-directory: ./
         run: |
-          ls -la
           cmake .
           cmake --build .
           cmake --build . --target package
