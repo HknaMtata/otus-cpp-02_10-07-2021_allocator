@@ -14,7 +14,7 @@ jobs:
       - name: Project build
         working-directory: ./
         run: |
-          cmake .
+          cmake . -DPATCH_VERSION=${{ github.run_number }}
           cmake --build .
           cmake --build . --target package
       - name: Create Release
