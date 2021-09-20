@@ -10,23 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-      - name: GTest download
-        run: git clone https://github.com/google/googletest.git googletest
-      - name: GTest compile and install
-        working-directory: ./googletest
-        run: |
-          sudo cmake . -Dgtest_disable_pthreads=ON
-          sudo cmake --build . --target install
-      - name: Boost install
-        run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
       - name: Project build
         run: |
-          cmake . -DPATCH_VERSION=${{ github.run_number }}
           cmake --build .
-          CTEST_OUTPUT_ON_FAILURE=1 cmake --build . --target test
           cmake --build . --target package
       - name: Create Release
         id: create_release
@@ -45,6 +31,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./ip-filter-0.0.${{ github.run_number }}-Linux.deb
-          asset_name: ip-filter-0.0.${{ github.run_number }}-Linux.deb
+          asset_path: ./allocator-0.0.${{ github.run_number }}-Linux.deb
+          asset_name: allocator-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package

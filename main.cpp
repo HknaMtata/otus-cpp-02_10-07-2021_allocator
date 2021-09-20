@@ -40,10 +40,10 @@ int main(int , char**)
 
     {
         lib::custom_container<int, lib::custom_allocator<int, 10>> custom_container_with_custom_allocator;
-        for(int i = 2; i <= 9; ++i)
+        for(int i = 0; i <= 9; ++i)
             custom_container_with_custom_allocator.push_back(i);
 
-        for(auto& val : custom_container_with_custom_allocator)
+        for(auto&& val : custom_container_with_custom_allocator)
             std::cout << val << std::endl;
     }
 
