@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Project build
         run: |
+          cmake .
           cmake --build .
           cmake --build . --target package
       - name: Create Release
