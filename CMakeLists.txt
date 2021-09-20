@@ -26,6 +26,13 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD_REQUIRED ON
 )
 
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    COMPILE_FLAGS "-fsanitize=address -fno-omit-frame-pointer"
+)
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    LINK_FLAGS "-fsanitize=address -fno-omit-frame-pointer"
+)
+
 target_compile_options(${PROJECT_NAME} PRIVATE
     -Wall -Wextra -pedantic -Werror -Wshadow
 )
