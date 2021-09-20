@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Project build
+        working-directory: ./
         run: |
+          ls -la
           cmake .
           cmake --build .
           cmake --build . --target package
