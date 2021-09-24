@@ -34,13 +34,16 @@ int main(int , char**)
 
     {
         lib::custom_container<int> custom_container;
-        for(int i = 0; i <= 9; ++i)
+        for(int i = 0; i < 10; ++i)
             custom_container.push_back(i);
+
+        for(auto&& val : custom_container)
+            std::cout << val << std::endl;
     }
 
     {
         lib::custom_container<int, lib::custom_allocator<int, 10>> custom_container_with_custom_allocator;
-        for(int i = 0; i <= 9; ++i)
+        for(int i = 0; i < 10; ++i)
             custom_container_with_custom_allocator.push_back(i);
 
         for(auto&& val : custom_container_with_custom_allocator)
